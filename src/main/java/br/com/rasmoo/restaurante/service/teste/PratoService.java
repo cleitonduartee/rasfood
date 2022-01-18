@@ -1,12 +1,10 @@
 package br.com.rasmoo.restaurante.service.teste;
 
+import br.com.rasmoo.restaurante.dao.PratoDao;
 import br.com.rasmoo.restaurante.entity.Prato;
 import br.com.rasmoo.restaurante.util.JPAUtil;
 
-import javax.persistence.Entity;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.math.BigDecimal;
 
 public class PratoService {
@@ -20,8 +18,9 @@ public class PratoService {
         Nesse momento o ciclo de vida da entidade é TRANSIENT (Não está sendo gerenciado pelo JPA)
          */
         EntityManager entityManager = JPAUtil.getEntityManagerRasFod();
+        PratoDao pratoDao = new PratoDao(entityManager);
         entityManager.getTransaction().begin();
-        entityManager.persist(risoto);
+        pratoDao.cadastrar(risoto);
         entityManager.getTransaction().commit();
         /*
         Nesse momento o ciclo de vida da entidade é MANAGED(JPA está monitorando a entidade, podendo ser invocado
