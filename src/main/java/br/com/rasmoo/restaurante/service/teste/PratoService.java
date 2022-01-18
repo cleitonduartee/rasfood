@@ -1,6 +1,7 @@
 package br.com.rasmoo.restaurante.service.teste;
 
 import br.com.rasmoo.restaurante.entity.Prato;
+import br.com.rasmoo.restaurante.util.JPAUtil;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
@@ -18,9 +19,7 @@ public class PratoService {
         /*
         Nesse momento o ciclo de vida da entidade é TRANSIENT (Não está sendo gerenciado pelo JPA)
          */
-
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("rasFood");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityManager entityManager = JPAUtil.getEntityManagerRasFod();
         entityManager.getTransaction().begin();
         entityManager.persist(risoto);
         entityManager.getTransaction().commit();
