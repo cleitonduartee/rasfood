@@ -19,19 +19,31 @@ public class CardapioDao {
     }
 
     public List<Cardapio> consultarTodos(){
-        String jpql = "SELECT c FROM Cardapio c";
-        return this.entityManager.createQuery(jpql, Cardapio.class).getResultList();
+        try{
+            String jpql = "SELECT c FROM Cardapio c";
+            return this.entityManager.createQuery(jpql, Cardapio.class).getResultList();
+        }catch (Exception e){
+            return null;
+        }
     }
 
     public List<Cardapio> consultaPorValor(final BigDecimal filtro){
-        String jpql = "SELECT c FROM Cardapio c WHERE c.valor = :valor";
-        return this.entityManager.createQuery(jpql, Cardapio.class)
-                .setParameter("valor",filtro)
-                .getResultList();
+       try{
+           String jpql = "SELECT c FROM Cardapio c WHERE c.valor = :valor";
+           return this.entityManager.createQuery(jpql, Cardapio.class)
+                   .setParameter("valor",filtro)
+                   .getResultList();
+       }catch (Exception e){
+           return null;
+       }
     }
     public Cardapio consultarPorNome(final String filtro){
-        String jpql = "SELECT c FROM Cardapio c WHERE c.nome = :nome";
-        return entityManager.createQuery(jpql,Cardapio.class).setParameter("nome",filtro).getSingleResult();
+        try{
+            String jpql = "SELECT c FROM Cardapio c WHERE UPPER(c.nome) = UPPER(:nome)";
+            return entityManager.createQuery(jpql,Cardapio.class).setParameter("nome",filtro).getSingleResult();
+        }catch (Exception e){
+            return null;
+        }
     }
     public Cardapio consultarPorId(Integer id){
         return entityManager.find(Cardapio.class, id);

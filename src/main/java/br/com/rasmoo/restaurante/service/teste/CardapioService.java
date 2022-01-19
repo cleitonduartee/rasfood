@@ -15,7 +15,7 @@ public class CardapioService {
         CargaDeDadosUtil.cadastrarCardapio(entityManager);
         CardapioDao cardapioDao = new CardapioDao(entityManager);
         System.out.println("Lista produtos por valor: "+ cardapioDao.consultaPorValor(BigDecimal.valueOf(88.50)));
-        System.out.println("Consulta por nome: "+ cardapioDao.consultarPorNome("Risoto de frutos do mar"));
+        System.out.println("Consulta por nome: "+ cardapioDao.consultarPorNome("risoto de frutos do Mar"));
         entityManager.close();
 
     }
