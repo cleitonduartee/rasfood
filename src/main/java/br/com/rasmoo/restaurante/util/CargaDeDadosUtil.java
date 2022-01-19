@@ -39,25 +39,25 @@ public class CargaDeDadosUtil {
                 BigDecimal.valueOf(88.50),categoriaDao.consultarPorId(3));
 
         Cardapio salmao = new Cardapio("Salmao ao molho de maracuja","Salmao grelhado ao molho",true,
-                BigDecimal.valueOf(88.50),categoriaDao.consultarPorId(3));
+                BigDecimal.valueOf(25.00),categoriaDao.consultarPorId(3));
         Cardapio entrada1 = new Cardapio("Entrada 1","Descrição entrada 1",true,
                 BigDecimal.valueOf(88.50),categoriaDao.consultarPorId(1));
 
         Cardapio entrada2 = new Cardapio("Entrada 2","Descrição entrada 2",true,
-                BigDecimal.valueOf(88.50),categoriaDao.consultarPorId(1));
+                BigDecimal.valueOf(35.45),categoriaDao.consultarPorId(1));
         Cardapio entrada3 = new Cardapio("Entrada 3","Descrição entrada 3",true,
-                BigDecimal.valueOf(88.50),categoriaDao.consultarPorId(1));
+                BigDecimal.valueOf(30.50),categoriaDao.consultarPorId(1));
 
         Cardapio entrada4 = new Cardapio("Entrada 4","Descrição entrada 4",true,
-                BigDecimal.valueOf(88.50),categoriaDao.consultarPorId(1));
+                BigDecimal.valueOf(50.00),categoriaDao.consultarPorId(1));
 
         Cardapio saida1 = new Cardapio("Saida 1","Descrição saida 1",true,
-                BigDecimal.valueOf(88.50),categoriaDao.consultarPorId(2));
+                BigDecimal.valueOf(80.00),categoriaDao.consultarPorId(2));
 
         Cardapio saida2 = new Cardapio("Saida 2","Descrição saida 2",true,
-                BigDecimal.valueOf(88.50),categoriaDao.consultarPorId(2));
+                BigDecimal.valueOf(18.50),categoriaDao.consultarPorId(2));
         Cardapio saida3 = new Cardapio("Saida 3","Descrição saida 3",true,
-                BigDecimal.valueOf(88.50),categoriaDao.consultarPorId(2));
+                BigDecimal.valueOf(28.50),categoriaDao.consultarPorId(2));
 
         Cardapio saida4 = new Cardapio("Saida 4","Descrição saida 4",true,
                 BigDecimal.valueOf(88.50),categoriaDao.consultarPorId(2));
@@ -73,6 +73,7 @@ public class CargaDeDadosUtil {
         cardapioDao.cadastrar(saida3);
         cardapioDao.cadastrar(saida4);
         entityManager.getTransaction().commit();
+        entityManager.clear();
     }
 
 
