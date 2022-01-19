@@ -29,6 +29,10 @@ public class CardapioDao {
                 .setParameter("valor",filtro)
                 .getResultList();
     }
+    public Cardapio consultarPorNome(final String filtro){
+        String jpql = "SELECT c FROM Cardapio c WHERE c.nome = :nome";
+        return entityManager.createQuery(jpql,Cardapio.class).setParameter("nome",filtro).getSingleResult();
+    }
     public Cardapio consultarPorId(Integer id){
         return entityManager.find(Cardapio.class, id);
     }
