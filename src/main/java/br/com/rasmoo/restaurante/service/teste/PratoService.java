@@ -14,6 +14,12 @@ public class PratoService {
         risoto.setDescricao("Risoto acompanhado lula, polvo e marisco");
         risoto.setDisponivel(true);
         risoto.setValor(BigDecimal.valueOf(88.50));
+
+        Prato salmao = new Prato();
+        salmao.setNome("Salmao ao molho de maracuja");
+        salmao.setDescricao("Salmao grelhado ao molho");
+        salmao.setDisponivel(true);
+        salmao.setValor(BigDecimal.valueOf(88.50));
         /*
         Nesse momento o ciclo de vida da entidade é TRANSIENT (Não está sendo gerenciado pelo JPA)
          */
@@ -21,11 +27,16 @@ public class PratoService {
         PratoDao pratoDao = new PratoDao(entityManager);
         entityManager.getTransaction().begin();
         pratoDao.cadastrar(risoto);
+        pratoDao.cadastrar(salmao);
+        System.out.println("Prato consultado foi: "+pratoDao.consultar(2));
+
+        pratoDao.deletar(salmao);
+        System.out.println("Prato consultado foi: "+pratoDao.consultar(2));
+        risoto.setValor(BigDecimal.valueOf(10));
+        pratoDao.atualizar(risoto);
+        System.out.println("Prato Atualizado foi: "+pratoDao.consultar(1));
         entityManager.getTransaction().commit();
-        /*
-        Nesse momento o ciclo de vida da entidade é MANAGED(JPA está monitorando a entidade, podendo ser invocado
-        os métodos commit() e flush() para sincronizar a entidade.
-         */
+
         entityManager.close();
         /*
         Nesse momento o ciclo de vida da entidade é DETACHED.
