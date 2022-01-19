@@ -16,10 +16,22 @@ public class Cardapio {
     private Boolean disponivel;
     private BigDecimal valor;
 
+    @JoinColumn(name = "categoria_id")
+    @ManyToOne()
+    Categoria categoria;
+
     @Column(name = "data_de_registro")
     private LocalDateTime dataDeRegistro = LocalDateTime.now();
 
     public Cardapio() {
+    }
+
+    public Cardapio(String nome, String descricao, Boolean disponivel, BigDecimal valor, Categoria categoria) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.disponivel = disponivel;
+        this.valor = valor;
+        this.categoria = categoria;
     }
 
     public Integer getId() {
@@ -72,12 +84,13 @@ public class Cardapio {
 
     @Override
     public String toString() {
-        return "Prato{" +
+        return "Cardapio{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
                 ", disponivel=" + disponivel +
                 ", valor=" + valor +
+                ", categoria=" + categoria +
                 ", dataDeRegistro=" + dataDeRegistro +
                 '}';
     }

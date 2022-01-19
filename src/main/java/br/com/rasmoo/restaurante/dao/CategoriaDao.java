@@ -1,28 +1,33 @@
 package br.com.rasmoo.restaurante.dao;
 
-import br.com.rasmoo.restaurante.entity.Cardapio;
+import br.com.rasmoo.restaurante.entity.Categoria;
 
 import javax.persistence.EntityManager;
 
-public class CardapioDao {
+public class CategoriaDao {
 
     private EntityManager entityManager;
 
-    public CardapioDao(EntityManager entityManager) {
+    public CategoriaDao(EntityManager entityManager) {
+
         this.entityManager = entityManager;
     }
 
-    public void cadastrar(final Cardapio cardapio){
-        this.entityManager.persist(cardapio);
+    public void cadastrar(final Categoria categoria){
+
+        this.entityManager.persist(categoria);
     }
 
-    public Cardapio consultar(Integer id){
-        return entityManager.find(Cardapio.class, id);
+    public Categoria consultarPorId(Integer id){
+
+        return entityManager.find(Categoria.class, id);
     }
-    public void atualizar(final Cardapio cardapio){
-        this.entityManager.merge(cardapio);
+    public void atualizar(final Categoria categoria){
+
+        this.entityManager.merge(categoria);
     }
-    public void deletar(Cardapio cardapio){
-        this.entityManager.remove(cardapio);
+    public void deletar(Categoria categoria){
+
+        this.entityManager.remove(categoria);
     }
 }
